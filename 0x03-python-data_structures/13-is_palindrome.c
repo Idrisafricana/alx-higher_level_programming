@@ -10,15 +10,16 @@
 listint_t *reverse_list(listint_t *head)
 {
 	listint_t *prev = NULL, *current = head, *next = NULL;
-	while (current != NULL) 
+
+	while (current != NULL)
 	{
-		next = current -> next;
-		current -> next = prev;
+		next = current->next;
+		current->next = prev;
 		prev = current;
 		current = next;
 	}
 
-	return prev;
+	return (prev);
 }
 
 /**
@@ -30,31 +31,28 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *slow = *head, *fast = *head, *second_half = NULL;
 
-	if ( *head == NULL || ( *head) -> next == NULL)
-		return 1;
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
 
-	while (fast != NULL && fast -> next != NULL)
+	while (fast != NULL && fast->next != NULL)
 	{
-		slow = slow -> next;
-		fast = fast -> next -> next;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
 
-// Reverse the second half of the list
-second_half = reverse_list(slow);
-// Compare the reversed second half with the first half
+	second_half = reverse_list(slow);
+
 	while (second_half != NULL)
 	{
-		if (( * head) -> n != second_half -> n)
+		if ((*head)->n != second_half->n)
 		{
-		// Free the reversed list
-		second_half = reverse_list(second_half);
-		return 0;
+			second_half = reverse_list(second_half);
+			return (0);
 		}
-		*head = ( *head) -> next;
-		second_half = second_half -> next;
+		*head = (*head)->next;
+		second_half = second_half->next;
 	}
-// Free the reversed list
-	second_half = reverse_list(second_half);
 
-	return (1)
+	second_half = reverse_list(second_half);
+	return (1);
 }
