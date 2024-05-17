@@ -7,7 +7,7 @@ if __name__ == "__main__":
     url = "https://alx-intranet.hbtn.io/status"
     request = urllib.request.Request(url)
     request.add_header('User-Agent', 'Mozilla/5.0')
-    
+
     with urllib.request.urlopen(request) as response:
         body = response.read()
         print("Body response:")
